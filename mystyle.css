@@ -1,5 +1,8 @@
+:root {
+    --honeydew: #F0FFF0;
+  }
 body {
-    background-color: lightblue;
+    background-color:var(--honeydew);
   }
   
   h1 {

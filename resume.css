@@ -23,7 +23,7 @@ body {
 header {
     background-color: var(--primary-color);
     color: white;
-    text-align: left;
+    text-align: left; /* Centering the text */
     padding: 1.5rem 2rem;
     width: 100%;
     margin: 0;
@@ -31,10 +31,17 @@ header {
     flex-direction: column;
 }
 
+/* Header Title */
+header h1 {
+    font-weight: bold;
+    font-size: 2rem; /* Adjust if necessary */
+    margin: 0; /* Remove any default margin */
+}
+
 /* Navigation Inside Header */
 nav {
     width: 100%;
-    background-color: inherit;
+    background-color: var(--primary-color); /* Matches the header */
     padding: 0;
     margin: 0;
 }
@@ -44,7 +51,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: left; /* Centering the navigation */
     gap: 1rem;
     flex-wrap: wrap;
     padding: 0.5rem 2rem;
@@ -58,7 +65,7 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem; /* Adjusted padding for better spacing */
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -231,4 +238,9 @@ dialog button:hover {
     dialog {
         font-size: 1rem;
     }
+}
+
+/* Remove Extra Space Below Header */
+header {
+    margin-bottom: 0;
 }

@@ -1,12 +1,159 @@
+/* CSS Variables with fallbacks */
 :root {
-    --honeydew: #F0FFF0;
-  }
+    --primary-color: #008B8B;
+    --secondary-color: #f4f4f4;
+    --text-color: black;
+    --font-primary: 'Poppins', Arial, sans-serif;
+    --font-secondary: 'Roboto', Helvetica, sans-serif;
+}
+
+/* Apply fallback if CSS variable is not supported */
 body {
-    background-color:var(--honeydew);
-  }
+    background-color: var(--secondary-color, white);
+    font-family: var(--font-primary, Arial, sans-serif);
+    color: var(--text-color, black);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--primary-color, navy);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Main Content */
+main {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Responsive Image */
+figure img {
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+figure img:hover {
+    transform: scale(1.05);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dynamic Viewport Units */
+.fullscreen-section {
+    width: 80dvw;
+    height: 50dvh;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: auto;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.2rem; /* Uses rem for scalability */
+    width: 80%;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* Button with transition and transform */
+button {
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+    background-color: var(--primary-color, navy);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+}
+
+button:hover {
+    background-color: darkblue;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color, navy);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Media Query - Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    figure img {
+        width: 80%;
+    }
+
+    .fullscreen-section {
+        width: 95dvw;
+        height: 40dvh;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
   
-  h1 {
-    color: navy;
-    margin-left: 20px;
-    font-family: Copperplate, Papyrus, fantasy;
-  }

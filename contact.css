@@ -1,0 +1,189 @@
+/* CSS Variables with fallbacks */
+:root {
+    --primary-color: #008B8B;
+    --secondary-color: #f4f4f4;
+    --text-color: black;
+    --font-primary: 'Poppins', Arial, sans-serif;
+    --font-secondary: 'Roboto', Helvetica, sans-serif;
+}
+
+/* General Styles */
+body {
+    background-color: var(--secondary-color, white);
+    font-family: var(--font-primary, Arial, sans-serif);
+    color: var(--text-color, black);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Header & Navigation Merged */
+header {
+    background-color: var(--primary-color, navy);
+    color: white;
+    text-align: left;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    margin: 0; /* Ensures no gap between header and navigation */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Inside Header */
+nav {
+    width: 100%;
+    background-color: inherit; /* Matches header */
+    padding: 0; /* No extra padding causing gaps */
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 2rem;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Main Content */
+main {
+    width: 80%;
+    margin-left: 2rem;
+    text-align: left;
+    padding: 2rem 0;
+}
+
+/* Contact Form */
+form {
+    background-color: color-mix(in srgb, var(--secondary-color) 90%, white 10%);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+fieldset {
+    border: 2px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 1rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-primary, Arial, sans-serif);
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Form Buttons */
+button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8em 1.5em;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black 20%);
+    transform: scale(1.05);
+}
+
+/* Contact Info */
+address {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Search Bar */
+search {
+    margin-top: 2rem;
+}
+
+search label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+search input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    main {
+        width: 90%;
+        margin-left: 1rem;
+    }
+
+    nav {
+        padding: 0.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.6em 1.2em;
+    }
+}

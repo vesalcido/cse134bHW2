@@ -213,3 +213,84 @@ search input {
 header {
     margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hide Checkbox by Default */
+.menu-toggle {
+    display: none;
+}
+
+/* Hamburger Icon */
+.menu-label {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 20;
+}
+
+/* Navigation Menu Default - Desktop View */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .menu-label {
+        display: block; /* Show hamburger menu on mobile */
+    }
+
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    /* Show Menu When Checkbox is Checked */
+    .menu-toggle:checked + .menu-label + nav ul {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 10px;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}

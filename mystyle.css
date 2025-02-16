@@ -174,3 +174,101 @@ footer {
         font-size: 1rem;
     }
 }
+
+
+
+
+/* 📱 Small Devices (Phones - < 600px) */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column; /* Stack navigation for better mobile view */
+        text-align: center;
+    }
+    
+    figure img {
+        width: 80%; /* Scale images for small screens */
+        object-fit: contain; 
+    }
+
+    main {
+        padding: 1rem;
+        width: 90%;
+    }
+}
+
+/* 📏 Medium Devices (Tablets & Small Laptops - 600px to 1024px) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    main {
+        width: 85%;
+    }
+
+    nav ul {
+        justify-content: space-around;
+    }
+
+    figure img {
+        max-width: 300px;
+    }
+}
+
+/* 💻 Large Devices (Desktops - 1024px+) */
+@media (min-width: 1024px) {
+    main {
+        width: 80%;
+        margin: auto;
+    }
+
+    nav ul {
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+
+    figure img {
+        max-width: 400px;
+    }
+}
+
+
+/* Hamburger Menu - Hidden by Default */
+.menu-toggle {
+    display: none; /* Hide checkbox */
+}
+
+/* Hamburger Icon - Only Visible on Small Screens */
+.menu-label {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+/* Show Menu Label on Small Screens */
+@media (max-width: 768px) {
+    .menu-label {
+        display: block;
+        text-align: right;
+        padding-right: 1rem;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        z-index: 10;
+    }
+
+    /* When Checkbox is Checked, Show Menu */
+    .menu-toggle:checked + nav ul {
+        display: flex;
+    }
+}

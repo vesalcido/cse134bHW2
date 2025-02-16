@@ -234,7 +234,12 @@ footer {
     display: none; /* Hide checkbox */
 }
 
-/* Hamburger Icon - Only Visible on Small Screens */
+/* Hide Checkbox by Default */
+.menu-toggle {
+    display: none;
+}
+
+/* Hamburger Icon */
 .menu-label {
     display: none;
     font-size: 2rem;
@@ -243,32 +248,57 @@ footer {
     color: white;
     cursor: pointer;
     padding: 1rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 20;
 }
 
-/* Show Menu Label on Small Screens */
+/* Navigation Menu Default - Desktop View */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Mobile Menu */
 @media (max-width: 768px) {
     .menu-label {
-        display: block;
-        text-align: right;
-        padding-right: 1rem;
+        display: block; /* Show hamburger menu on mobile */
     }
 
     nav ul {
-        display: none;
+        display: none; /* Hide menu by default */
         flex-direction: column;
-        text-align: center;
-        width: 100%;
-        background-color: var(--primary-color);
         position: absolute;
         top: 60px;
         left: 0;
-        padding: 0;
-        margin: 0;
-        z-index: 10;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 1rem 0;
+        text-align: center;
     }
 
-    /* When Checkbox is Checked, Show Menu */
-    .menu-toggle:checked + nav ul {
+    /* Show Menu When Checkbox is Checked */
+    .menu-toggle:checked + .menu-label + nav ul {
         display: flex;
+    }
+
+    nav ul li {
+        padding: 10px;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    nav ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
     }
 }

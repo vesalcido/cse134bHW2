@@ -275,7 +275,7 @@ nav ul {
     }
 
     /* Show Menu When Checkbox is Checked */
-    .menu-toggle:checked + .menu-label + nav ul {
+    .menu-toggle:checked ~ nav ul {
         display: flex;
     }
 

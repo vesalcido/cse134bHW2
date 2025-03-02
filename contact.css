@@ -138,6 +138,61 @@ input, textarea, select {
     font-family: var(--font-primary, Arial, sans-serif);
 }
 
+/* 🔹 New Character Countdown Styling */
+.char-count {
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 5px;
+    font-weight: bold;
+    display: block;
+}
+
+/* 🔹 Warn Style for Countdown (10 or fewer characters left) */
+.char-count.warn {
+    color: orange;
+}
+
+/* 🔹 Error Style for Countdown (5 or fewer characters left) */
+.char-count.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* 🔹 Warn Style for Text Area (10 or fewer characters left) */
+textarea.warn {
+    border-color: orange !important;
+    background-color: #fff3cd !important; /* Light yellow background */
+}
+
+/* 🔹 Error Style for Text Area (5 or fewer characters left) */
+textarea.error {
+    border-color: red !important;
+    background-color: #f8d7da !important; /* Light red background */
+}
+
+
+
+
+
+
+
+/* ✅ Flash Effect for Invalid Input */
+@keyframes flashRed {
+    0% { background-color: #ffcccc; }
+    50% { background-color: white; }
+    100% { background-color: #ffcccc; }
+}
+
+.flash-error {
+    animation: flashRed 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
 input:invalid, textarea:invalid {
     border-color: red;
     background-color: #ffe6e6; /* Light red background for invalid fields */
@@ -146,6 +201,18 @@ input:invalid, textarea:invalid {
 input:valid, textarea:valid {
     border-color: green;
     background-color: #e6ffe6; /* Light green background for valid fields */
+}
+
+/* ✅ Error Message Styling */
+.error-message {
+    display: none;
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 /* ADDED HERE: Email Validation */

@@ -37,7 +37,48 @@ body.dark-mode textarea::placeholder {
     color: #666 !important; /* Keeps placeholders readable */
 }
 
+/* ✅ Preserve Error Colors and Functionality in Dark Mode */
 
+/* 🔴 Error State (Red Background for Inputs & Textareas) */
+input.error, 
+textarea.error {
+    background-color: #f8d7da !important; /* Light red */
+    border-color: red !important;
+    color: black !important;
+}
+
+/* 🟡 Warning State (Yellow Background for Textareas Close to Limit) */
+textarea.warn {
+    background-color: #fff3cd !important; /* Light yellow */
+    border-color: orange !important;
+    color: black !important;
+}
+
+/* 🟢 Valid Input State (Green Background) */
+input:valid,
+textarea:valid {
+    background-color: #e6ffe6 !important; /* Light green */
+    border-color: green !important;
+    color: black !important;
+}
+
+/* 🔥 Keep Error Message Box Red */
+.error-message {
+    background-color: #f8d7da !important;
+    color: black !important;
+    border: 1px solid red !important;
+}
+
+/* ⚡ Keep Flash Red Animation for Invalid Inputs */
+@keyframes flashRed {
+    0% { background-color: #ffcccc; }
+    50% { background-color: white; }
+    100% { background-color: #ffcccc; }
+}
+
+.flash-error {
+    animation: flashRed 0.3s ease-in-out;
+}
 
 
 

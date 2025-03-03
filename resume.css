@@ -19,6 +19,37 @@ body {
     align-items: flex-start;
 }
 
+/* 🌙 Dark Mode Styles */
+body.dark-mode {
+    --primary-color: #333;
+    --secondary-color: #121212;
+    --text-color: white;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+/* 🔹 Keep Inputs, Forms, and Labels Readable in Dark Mode */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode form,
+body.dark-mode main {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #555;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* Header & Navigation Merged (No Gap) */
 header {
     background-color: var(--primary-color);
@@ -30,6 +61,49 @@ header {
     display: flex;
     flex-direction: column;
 }
+
+/* Theme Toggle Button - Small & Positioned in Top-Right */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem; /* Keep size same */
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Position same as contact page */
+    right: 15px;
+    color: var(--text-color);
+    padding: 5px;
+    width: 30px; /* Keep button size consistent */
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%; /* Make it circular */
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent look */
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Show button only when JavaScript is enabled */
+body.js-enabled #theme-toggle {
+    display: block;
+}
+
+/* Hover Effect */
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Header Title */
 header h1 {

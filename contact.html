@@ -9,10 +9,12 @@
 </head>
 <body>
     <header>
-        <h1>Contact Me</h1>
+        <h1>Contact Me</h1> 
         <!-- Hamburger Menu Checkbox -->
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="menu-label">☰</label>
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
         
         <!-- Navigation Menu -->
         <nav>
@@ -25,11 +27,13 @@
                 <li><a href="experiment.html">Experiment Page</a></li>
             </ul>
         </nav>
+        
     </header>
 
     <main>
         <form action="https://httpbin.org/post" method="POST">
             <fieldset>
+                
                 <legend>Contact Form</legend>
 
                 <label for="name">Name:</label>
@@ -50,6 +54,8 @@
 
                 <!-- Hidden Field -->
                 <input type="hidden" name="possible_bot" value="true">
+                <input type="hidden" id="form-errors" name="form-errors">  <!-- ✅ Added here --> 
+
 
                 <label for="inquiry">Inquiry Type:</label>
                 <select id="inquiry" name="inquiry">
@@ -74,7 +80,10 @@
     </main>
     <!-- ✅ JavaScript for Improved Validation -->
     <script>
+        //let form_errors =[];
         document.addEventListener("DOMContentLoaded", function () {
+            let form_errors =[];
+
             const form = document.querySelector("form");
             const nameInput = document.getElementById("name");
             const emailInput = document.getElementById("email");
@@ -83,9 +92,47 @@
             const errorMessageDiv = document.getElementById("error-message");
             const maxLength = 30;
 
-            function showErrorMessage(message) {
+            // Theme toggle functionality (Added Here)
+            const themeToggle = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            // Check localStorage for theme preference
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                body.classList.add("dark-mode");
+                themeToggle.textContent = "☀️"; // Change to sun icon
+            }
+
+            // Toggle Theme
+            themeToggle.addEventListener("click", function () {
+                body.classList.toggle("dark-mode");
+                const isDarkMode = body.classList.contains("dark-mode");
+
+                // Save preference to localStorage
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+                // Update button icon
+                themeToggle.textContent = isDarkMode ? "☀️" : "🌙";
+            });
+
+
+
+
+
+
+
+
+            
+
+            function showErrorMessage(field, message) {
                 errorMessageDiv.innerHTML = message;
                 errorMessageDiv.style.display = "block";
+                
+                // ✅ Check if the error is already in the array
+                if (!form_errors.some(error => error.field === field)) {
+                    form_errors.push({ field: field, message: message });
+                }
+                console.log("Updated form errors:", form_errors); // ✅ Debugging Log
                 setTimeout(() => {
                     errorMessageDiv.style.display = "none";
                 }, 2000);
@@ -97,7 +144,7 @@
                 if (!regex.test(nameInput.value)) {
                     nameInput.value = nameInput.value.replace(/[^a-zA-Z ]/g, "");
                     nameInput.classList.add("flash-error");
-                    showErrorMessage("❌ Only letters and spaces are allowed in the Name field.");
+                    showErrorMessage("name","❌ Only letters and spaces are allowed in the Name field.");
                     setTimeout(() => nameInput.classList.remove("flash-error"), 300);
                 }
             });
@@ -129,7 +176,7 @@
                 if (messageInput.value.length > maxLength) {
                     messageInput.value = messageInput.value.substring(0, maxLength);
                     messageInput.classList.add("flash-error");
-                    showErrorMessage("❌ Maximum 30 characters allowed in the Message field.");
+                    showErrorMessage("message","❌ Maximum 30 characters allowed in the Message field.");
                     setTimeout(() => messageInput.classList.remove("flash-error"), 300);
                 }
             });
@@ -139,18 +186,26 @@
                 let isValid = true;
                 let errorMessages = [];
 
+                form_errors = [];
+
                 if (!nameInput.checkValidity()) {
                     isValid = false;
                     errorMessages.push("❌ Name can only contain letters and spaces.");
                     nameInput.setCustomValidity("Only letters and spaces allowed.");
+                    // ✅ Store error in form_errors array
+                    form_errors.push({ field: "name", message: "Invalid name format" });
                 } else {
                     nameInput.setCustomValidity("");
+                    // // ✅ Store error in form_errors array
+                    // form_errors.push({ field: "name", message: "Invalid name format" });
                 }
 
                 if (!emailInput.checkValidity()) {
                     isValid = false;
                     errorMessages.push("❌ Please enter a valid email address.");
                     emailInput.setCustomValidity("Enter a valid email (e.g., user@example.com).");
+                    // ✅ Store error in form_errors array
+                    form_errors.push({ field: "email", message: "Invalid email address" });
                 } else {
                     emailInput.setCustomValidity("");
                 }
@@ -159,9 +214,14 @@
                     isValid = false;
                     errorMessages.push("❌ Message must be at most 30 characters long.");
                     messageInput.setCustomValidity("Maximum 30 characters allowed.");
+                    // ✅ Store error in form_errors array
+                    form_errors.push({ field: "message", message: "Message exceeds character limit" });
                 } else {
                     messageInput.setCustomValidity("");
                 }
+                // ✅ NEW: Convert form_errors array to JSON and store in hidden field
+                document.getElementById("form-errors").value = JSON.stringify(form_errors);
+                console.log("Form Errors:", form_errors);
 
                 if (!isValid) {
                     event.preventDefault();
@@ -171,6 +231,10 @@
                         errorMessageDiv.style.display = "none";
                     }, 5000);
                 }
+                // // ✅ NEW: Convert form_errors array to JSON and store in hidden field
+                // document.getElementById("form-errors").value = JSON.stringify(form_errors);
+                // console.log("Form Errors:", form_errors);
+
             });
         });
     </script>

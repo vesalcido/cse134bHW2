@@ -7,6 +7,47 @@
     --font-secondary: 'Roboto', Helvetica, sans-serif;
 }
 
+/* Dark Mode Variables */
+body.dark-mode {
+    --primary-color: #333;
+    --secondary-color: #121212;
+    --text-color: white;
+}
+
+/* Ensure Labels & Form Text Stay Black in Dark Mode */
+body.dark-mode label,
+body.dark-mode legend,
+body.dark-mode p,
+body.dark-mode b {
+    color: black !important; /* Keeps labels and text black */
+}
+
+/* Ensure Inputs Stay Readable in Dark Mode */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: white !important; /* Keeps inputs white */
+    color: black !important; /* Keeps text inside inputs black */
+    border: 1px solid #555; /* Adds a visible border */
+}
+
+/* Ensure Placeholder Text is Visible in Dark Mode */
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #666 !important; /* Keeps placeholders readable */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* General Styles */
 body {
     background-color: var(--secondary-color, white);
@@ -18,6 +59,44 @@ body {
     flex-direction: column;
     align-items: flex-start;
 }
+
+
+/* Theme Toggle Button - Small & Positioned in Top-Right */
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem; /* Make the button smaller */
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Adjust closer to the top */
+    right: 15px; /* Adjust to be closer to the right edge */
+    color: var(--text-color);
+    padding: 5px; /* Add small padding */
+    width: 30px; /* Set fixed width */
+    height: 30px; /* Set fixed height */
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%; /* Optional: Makes it circular */
+    background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    /*display: none; /* Hidden by default */
+}
+
+/* Show button only when JavaScript is enabled */
+body.js-enabled #theme-toggle {
+    display: block;
+}
+
+/* Hover Effect */
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+
+
+
+
 
 /* Header & Navigation Merged (No Gap) */
 header {
